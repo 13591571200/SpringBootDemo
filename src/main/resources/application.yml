@@ -1,2 +1,29 @@
 server:
   port: 8888
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@192.168.128.220:1521:kforcl
+    username: indbadmin
+    password: indbadmin
+    driver-class-name: oracle.jdbc.OracleDriver
+    druid:
+      initial-size: 5 # 初始化连接大小
+      min-idle: 3     # 最小空闲连接数
+      max-active: 10  # 最大连接数
+      test-on-borrow: true
+
+mybatis:
+  type-aliases-package: com.jiafupeng.mapper
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl # 无日志(默认有debug日志)
+
+
+#mybatis:
+#  type-aliases-package: com.jiafupeng.mapper
+#  mapper-locations: classpath:mapper/**/*.xml
+#  configuration:
+#    log-impl: com.jiafupeng.util.MySlf4jImpl # mybatis自定义日志输出实现类 并将[debug]日志输出成[info]日志
+##    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl # 无日志(默认有debug日志)
+##    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台输出日志
